@@ -6,9 +6,7 @@
     Author: dawid
     License: MIT
     GitHub: https://github.com/dawid-scripts/Fluent
-]]
-
-
+--]]
 local a, b = {
     {
         1,
@@ -22,23 +20,21 @@ local a, b = {
                 "ModuleScript",
                 {"Themes"},
                 {
-                    {48,"ModuleScript",{"Amethyst"}},
-                    {49,"ModuleScript",{"Aqua"}},
-                    {50,"ModuleScript",{"Dark"}},
-                    {51,"ModuleScript",{"Darker"}},
-                    {52,"ModuleScript",{"Light"}},
-                    {53,"ModuleScript",{"Rose"}},
-                    {54,"ModuleScript",{"Dark Violet"}},
-                    {55,"ModuleScript",{"Blue"}},
-                    {56,"ModuleScript",{"Vampire"}},
-                    {57,"ModuleScript",{"Rainbow"}},
-                    {58,"ModuleScript",{"Luffy"}},
-                    {59,"ModuleScript",{"Green"}},
-                    {60,"ModuleScript",{"Black"}}
+                    {48, "ModuleScript", {"Amethyst"}},
+                    {49, "ModuleScript", {"Aqua"}},
+                    {50, "ModuleScript", {"Dark"}},
+                    {51, "ModuleScript", {"Darker"}},
+                    {52, "ModuleScript", {"Light"}},
+                    {53, "ModuleScript", {"Rose"}},
+                    {54, "ModuleScript", {"Dark Violet"}},
+                    {55, "ModuleScript", {"Blue"}},
+                    {56, "ModuleScript", {"Vampire"}},
+                    {57, "ModuleScript", {"Rainbow"}},
+                    {58, "ModuleScript", {"Luffy"}},
+                    {59, "ModuleScript", {"Green"}},
+                    {60, "ModuleScript", {"Black"}}
                 }
             },
-
-
             {
                 19,
                 "ModuleScript",
@@ -140,13 +136,13 @@ local aa = {
             Window = nil,
             WindowFrame = nil,
             Unloaded = false,
-            Theme = "Darker",
+            Theme = "Dark",
             DialogOpen = false,
             UseAcrylic = false,
             Acrylic = false,
-            Transparency = false,
+            Transparency = true,
             MinimizeKeybind = nil,
-            MinimizeKey = Enum.KeyCode.RightShift,
+            MinimizeKey = Enum.KeyCode.Delete,
             GUI = w
         }
         function x.SafeCallback(y, z, ...)
@@ -1604,6 +1600,24 @@ local aa = {
                     }
                 end
             )
+            o.MaxButton =
+                q(
+                i.Max,
+                UDim2.new(1, -40, 0, 4),
+                o.Frame,
+                function()
+                    n.Window.Maximize(not n.Window.Maximized)
+                end
+            )
+            o.MinButton =
+                q(
+                i.Min,
+                UDim2.new(1, -80, 0, 4),
+                o.Frame,
+                function()
+                    p.Window:Minimize()
+                end
+            )
             return o
         end
     end,
@@ -1683,7 +1697,7 @@ local aa = {
                     TextTransparency = 0,
                     FontFace = Font.new("rbxassetid://12187365364", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal),
                     TextSize = 28,
-                    TextXAlignment = Enum.TextXAlignment.Left,
+                    TextXAlignment = "Left",
                     TextYAlignment = "Center",
                     Size = UDim2.new(1, -16, 0, 28),
                     Position = UDim2.fromOffset(t.TabWidth + 26, 56),
@@ -5079,7 +5093,23 @@ local aa = {
     end,
     [47] = function()
         local aa, ab, ac, ad, ae = b(47)
-        local af = {Names = {'Dark','Darker','Light','Aqua','Amethyst','Rose',"Dark Violet","Blue","Vampire","Rainbow","Luffy","Green","Black"}}
+        local af = {
+            Names = {
+                "Dark",
+                "Darker",
+                "Light",
+                "Aqua",
+                "Amethyst",
+                "Rose",
+                "Dark Violet",
+                "Blue",
+                "Vampire",
+                "Rainbow",
+                "Luffy",
+                "Green",
+                "Black"
+            }
+        }
         for ag, ah in next, ab:GetChildren() do
             local aj = ac(ah)
             af[aj.Name] = aj
