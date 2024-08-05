@@ -896,7 +896,7 @@ function Minimise()
 	Debounce = false
 end
 
-local LogoLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/CrazyHub123/Library/main/Icons.lua"))().Icons
+local NexusIcons = loadstring(game:HttpGet("https://raw.githubusercontent.com/CrazyHub123/Library/main/Icons.lua"))().Icons
 
 function RayfieldLibrary:CreateWindow(Settings)
 	local Passthrough = false
