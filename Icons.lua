@@ -1,4 +1,4 @@
-local NexusIcons
+local NexusIcons = {}
 
 NexusIcons.Icons = {
   ["Home"] = "18819725886",
