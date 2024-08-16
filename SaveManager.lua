@@ -300,13 +300,6 @@ local SaveManager = {} do
                         Duration = 7
                     })
                 end
-    
-                self.Library:Notify({
-                    Title = "Interface",
-                    Content = "Config loader",
-                    SubContent = string.format("Overwrote config %q", name),
-                    Duration = 7
-                })
             end
         end})
 
