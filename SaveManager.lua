@@ -214,7 +214,7 @@ local SaveManager = {} do
 
 		if isfile(self.Folder .. "/settings/autoload.txt") then
 			local name = readfile(self.Folder .. "/settings/autoload.txt")
-			SaveManager_ConfigList:SetValue(name)
+			SaveManager.Options.SaveManager_ConfigList:SetValue(name)
 		end
 		
 		section:AddButton({
