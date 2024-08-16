@@ -287,23 +287,28 @@ local SaveManager = {} do
 			})
 		end})
 
-        section:AddToggle("AutoOverWrite",{Title = "Auto Overwrtie Config"})
+        section:AddToggle("AutoOverWrite",{Title = "Auto Overwrtie Config", Callback = function(v)
+		getgenv().Save = v
+	end})
 
-	spawn(function()
-	    while task.wait(2) and SaveManager.Options.AutoOverWrite.Value do
-                local name = SaveManager.Options.SaveManager_ConfigList.Value
-
-                local success, err = self:Save(name)
-                if not success then
-                    return self.Library:Notify({
-                        Title = "Interface",
-                        Content = "Config loader",
-                        SubContent = "Failed to overwrite config: " .. err,
-                        Duration = 7
-                    })
-                end
-            end
+	task.spawn(function()
+	    while task.wait(2) and getgenv().Save do
+	                local name = SaveManager.Options.SaveManager_ConfigList.Value
+	
+	                local success, err = self:Save(name)
+	                if not success then
+	                    return self.Library:Notify({
+	                        Title = "Interface",
+	                        Content = "Config loader",
+	                        SubContent = "Failed to overwrite config: " .. err,
+	                        Duration = 7
+	                    })
+	                end
+		end
 	end)
+
+
+
 
 		section:AddButton({Title = "Refresh list", Callback = function()
 			SaveManager.Options.SaveManager_ConfigList:SetValues(self:RefreshConfigList())
