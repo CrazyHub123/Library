@@ -287,8 +287,10 @@ local SaveManager = {} do
 			})
 		end})
 
-        section:AddToggle("Toggle",{Title = "Auto Overwrtie Config", Callback = function()
-            while task.wait(2) do
+        section:AddToggle("AutoOverWrite",{Title = "Auto Overwrtie Config"})
+
+	spawn(function()
+	    while task.wait(2) and SaveManager.Options.AutoOverWrite.Value do
                 local name = SaveManager.Options.SaveManager_ConfigList.Value
 
                 local success, err = self:Save(name)
@@ -301,7 +303,7 @@ local SaveManager = {} do
                     })
                 end
             end
-        end})
+	end)
 
 		section:AddButton({Title = "Refresh list", Callback = function()
 			SaveManager.Options.SaveManager_ConfigList:SetValues(self:RefreshConfigList())
