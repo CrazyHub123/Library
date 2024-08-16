@@ -207,11 +207,13 @@ local SaveManager = {} do
 		local section = tab:AddSection("Configuration")
 
 		section:AddInput("SaveManager_ConfigName",    { Title = "Config name" })
-		section:AddDropdown("SaveManager_ConfigList", { Title = "Config list", Values = self:RefreshConfigList() })
+		if isfile(self.Folder .. "/settings/autoload.txt") then
+			local name = readfile(self.Folder .. "/settings/autoload.txt")
+		end
+			
+		section:AddDropdown("SaveManager_ConfigList", { Title = "Config list", Values = self:RefreshConfigList(), Default = name, AlowNull = true })
 
-		local name = SaveManager.Options.SaveManager_ConfigList.Value
-		SaveManager.Options.SaveManager_ConfigList:SetValue(name)
-
+		
 		section:AddButton({
             Title = "Create config",
             Callback = function()
