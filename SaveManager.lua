@@ -1,7 +1,7 @@
 local httpService = game:GetService("HttpService")
 
 local SaveManager = {} do
-	SaveManager.Folder = "Jupiter"
+	SaveManager.Folder = "FluentSettings"
 	SaveManager.Ignore = {}
 	SaveManager.Parser = {
 		Toggle = {
@@ -286,6 +286,29 @@ local SaveManager = {} do
 				Duration = 7
 			})
 		end})
+
+        section:AddToggle("Toggle",{Title = "Auto Overwrtie Config", Callback = function()
+            while task.wait(2) do
+                local name = SaveManager.Options.SaveManager_ConfigList.Value
+
+                local success, err = self:Save(name)
+                if not success then
+                    return self.Library:Notify({
+                        Title = "Interface",
+                        Content = "Config loader",
+                        SubContent = "Failed to overwrite config: " .. err,
+                        Duration = 7
+                    })
+                end
+    
+                self.Library:Notify({
+                    Title = "Interface",
+                    Content = "Config loader",
+                    SubContent = string.format("Overwrote config %q", name),
+                    Duration = 7
+                })
+            end
+        end})
 
 		section:AddButton({Title = "Refresh list", Callback = function()
 			SaveManager.Options.SaveManager_ConfigList:SetValues(self:RefreshConfigList())
