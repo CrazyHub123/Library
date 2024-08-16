@@ -207,7 +207,7 @@ local SaveManager = {} do
 		local section = tab:AddSection("Configuration")
 
 		section:AddInput("SaveManager_ConfigName",    { Title = "Config name" })
-		section:AddDropdown("SaveManager_ConfigList", { Title = "Config list", Values = self:RefreshConfigList(), AllowNull = true })
+		section:AddDropdown("SaveManager_ConfigList", { Title = "Config list", Values = self:RefreshConfigList() })
 
 		section:AddButton({
             Title = "Create config",
