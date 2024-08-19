@@ -4145,10 +4145,16 @@ function Library:CreateWindow(...)
 	
 		Library:MakeDraggable(LockUIOuter);
 		
-		LockUIButton.MouseButton1Down:Connect(function()
-			Library.CantDragForced = not Library.CantDragForced;
-		end)
-	end;
+
+	        LockUIButton.MouseButton1Down:Connect(function()
+	            Library.CantDragForced = not Library.CantDragForced;
+	            if Library.CantDragForced then
+	                LockUIButton.Text = "Unlock UI";
+	            else
+	                LockUIButton.Text = "Lock UI";
+	            end
+	        end)
+		end;
 
 	if Config.AutoShow then task.spawn(Library.Toggle) end
 
