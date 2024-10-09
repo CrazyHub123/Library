@@ -3361,7 +3361,12 @@ local aa = {
             d.Content = d.Content or ""
 
 
+
             local e = ac(ag.Element)(d.Title, d.Content, aj.Container, false)
+
+            e.TitleLabel.RichText = true
+            e.DescLabel.RichText = true
+
             if d.Section then
                 e.TitleLabel.TextXAlignment = Enum.TextXAlignment.Center
                 e.Frame.BackgroundTransparency = 0.8
@@ -3385,6 +3390,7 @@ local aa = {
                     e.DescLabel.TextSize = d.DescSize
                 end)
             end
+
             e.Border.Transparency = 0.6
             return e
         end
