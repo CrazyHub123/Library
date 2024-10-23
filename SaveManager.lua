@@ -295,7 +295,7 @@ local SaveManager = {} do
 			})
 		end})
 
-        section:AddToggle("AutoOverWrite",{Title = "Auto Overwrtie Config", Callback = function(v)
+        section:AddToggle("AutoOverWrite",{Title = "Auto Overwrite Config", Callback = function(v)
 		getgenv().Save = v
 					
 	    while task.wait(2) and getgenv().Save do
